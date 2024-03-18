@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -15,6 +16,10 @@ module.exports = {
             test: /\.css$/,
             use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.s[ac]ss$/i,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
         ],
     },
     plugins: [
@@ -26,6 +31,13 @@ module.exports = {
               { from: 'audios', to: 'audios' }, // Copia la carpeta de audios de 'audios' a 'dist/audios'
             ],
         }),
+       
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        }),
+        
     ],
     
     devServer: {
