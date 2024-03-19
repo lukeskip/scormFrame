@@ -1,7 +1,7 @@
 import Reveal from 'reveal.js';
 $(function() {
     Reveal.initialize({
-        controls: false,
+        controls: true,
         progress: false,
         center: true,
         hash: false,
